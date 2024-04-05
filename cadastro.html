@@ -168,7 +168,7 @@
         var listRef = database.ref('messages/')
         var newRef = listRef.push()
 
-        // Generate identification number
+      
         var id = '#' + padWithZeros(newRef.key, 3)
 
         newRef.set({
@@ -178,7 +178,6 @@
             'message': message.value
         })
 
-        // Clear input fields after submission
         name.value = ''
         email.value = ''
         message.value = ''
@@ -186,7 +185,6 @@
         window.alert("Enviado com Sucesso!")
     }
 
-    // Function to pad number with zeros
     function padWithZeros(number, length) {
         var str = '' + number
         while (str.length < length) {
