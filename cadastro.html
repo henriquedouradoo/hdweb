@@ -47,7 +47,7 @@
                   <label>Senha</label>
                 </div>
 
-                <input type="submit" value="Salvar"  class="sign-btn" />
+                <input type="submit" onclick="redirecionar()" value="Visualizar Agendamentos"  class="sign-btn" /> 
 
                 <p class="text">
                   Forgotten your password or you login datails?
@@ -73,7 +73,7 @@
                   <input
                     type="number"
                     maxlength="3"
-                    id="age"
+                    id="age-user"
                     class="input-field"
                     autocomplete="off"
                     required
@@ -84,7 +84,7 @@
                 <div class="input-wrap">
                   <input
                     type="email"
-                    id="email"
+                    id="email-user"
                     class="input-field"
                     autocomplete="off"
                     required
@@ -96,7 +96,7 @@
                   <input
                     type="text"
                     minlength="4"
-                    id="phone"
+                    id="phone-user"
                     maxlength="11"
                     class="input-field"
                     autocomplete="off"
@@ -105,7 +105,7 @@
                   <label>Telefone</label>
                 </div>
 
-                <input type="submit" value="Concluir" class="sign-btn" />
+                <input type="submit" value="Concluir" id="btn-next" class="sign-btn" />
 
                 <p class="text">
                   By signing up, I agree to the
@@ -157,15 +157,15 @@
     firebase.initializeApp(firebaseConfig)
     const database = firebase.database()
 
-    const submit = document.querySelector('button')
+    const submit = document.getElementById('btn-next')
     submit.onclick = () => sendData()
 
     function sendData(){
-        var name = document.getElementById('#age')
-        var email = document.getElementById('#email')
-        var message = document.getElementById('#phone')
+        var name = document.getElementById('age-user')
+        var email = document.getElementById('email-user')
+        var message = document.getElementById('phone-user')
 
-        var listRef = database.ref('messages/')
+        var listRef = database.ref('agendamentos/')
         var newRef = listRef.push()
 
       
@@ -192,6 +192,12 @@
         }
         return str
     }
+
+    function redirecionar() {
+      window.location.href = 'resultado.html'
+    }
+
+    
 </script>
   </body>
 </html>

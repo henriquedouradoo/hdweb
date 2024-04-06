@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realtime Fetching From Firebase Databases</title>
+    <title>Agendamentos HDweb</title>
     <style>
         .container{
             max-width: 900px;
@@ -41,7 +41,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Realtime fetching From Firebase Databases</h1>
+        <h1>Ver ultimos agendamentos</h1>
         <table>
             <thead>
                 <tr>
@@ -70,7 +70,7 @@
     const dataContainer = document.querySelector('tbody')
 
     // give complete path to fetch data as given during sending
-    var fetchedData = database.ref('messages/')
+    var fetchedData = database.ref('agendamentos/')
     fetchedData.on('value', (snapshot) => {
         var data = snapshot.val()
         // now set data in table
@@ -95,7 +95,7 @@
 
     // remove message function
     function removeMess(uniqueId){
-        database.ref('messages/' + uniqueId).remove()
+        database.ref('agendamentos/' + uniqueId).remove()
         // this realtime remove will delete data without any loading
         // as data is updated, it refetch and rerender in html automatically
     }
@@ -126,7 +126,7 @@
         }
         // create reference to the data first where data will update
         // uniqueId will be the id of each message in db
-        var listRef = database.ref('messages/' + uniqueId)
+        var listRef = database.ref('agendamentos/' + uniqueId)
         // now provide updated data
         listRef.update(obj)
         // after update new data will rerender automatically
